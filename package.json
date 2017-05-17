@@ -1,0 +1,32 @@
+{
+  "name": "cl-node-object-streams",
+  "version": "1.0.0",
+  "description": "Helper functions to simplify creating and concatenating object streams in NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "eslint --fix .",
+    "test": "node $NODE_DEBUG_OPTION node_modules/cl-node-dev-tools/run-tests.js",
+    "tdd": "node $NODE_DEBUG_OPTION node_modules/cl-node-dev-tools/run-tests.js continuously"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/copperleaftech/cl-node-object-streams.git"
+  },
+  "keywords": [
+    "object",
+    "streams"
+  ],
+  "author": "Copperleaf Technologies",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/copperleaftech/cl-node-object-streams/issues"
+  },
+  "homepage": "https://github.com/copperleaftech/cl-node-object-streams#readme",
+  "devDependencies": {
+    "cl-node-dev-tools": "git+https://github.com/copperleaftech/cl-node-dev-tools.git",
+    "mock-fs": "^4.3.0"
+  },
+  "dependencies": {
+    "async": "^2.4.0"
+  }
+}
