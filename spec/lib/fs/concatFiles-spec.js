@@ -42,18 +42,18 @@ describe( 'Instances of concatFiles streams', ()=>{
       = [];
 
     just( input )
-     .on( 'error', onError )
-     .pipe( concatFiles( 'dirPath' ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( concatFiles( 'dirPath' ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
 
-       expect( expected )
-         .toEqual( actual.join( '' ) );
+        expect( expected )
+          .toEqual( actual.join( '' ) );
 
-       done();
+        done();
 
-     } );
+      } );
 
   } );
 
@@ -77,18 +77,18 @@ describe( 'Instances of concatFiles streams', ()=>{
       = [];
 
     just( input )
-     .on( 'error', onError )
-     .pipe( concatFiles( 'dirPath', delimiter ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( concatFiles( 'dirPath', delimiter ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
 
-       expect( expected )
-         .toEqual( actual.join( '' ) );
+        expect( expected )
+          .toEqual( actual.join( '' ) );
 
-       done();
+        done();
 
-     } );
+      } );
 
 
   } );
@@ -102,18 +102,18 @@ describe( 'Instances of concatFiles streams', ()=>{
       = [];
 
     just( input )
-     .on( 'error', onError )
-     .pipe( concatFiles( 'dirPath' ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( concatFiles( 'dirPath' ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
 
-       expect( input )
-         .toEqual( actual );
+        expect( input )
+          .toEqual( actual );
 
-       done();
+        done();
 
-     } );
+      } );
 
 
   } );
@@ -137,18 +137,18 @@ describe( 'Instances of concatFiles streams', ()=>{
       = [];
 
     just( input )
-     .on( 'error', onError )
-     .pipe( concatFiles( 'dirPath', delimiter ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( concatFiles( 'dirPath', delimiter ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
 
-       expect( expected )
-         .toEqual( actual.join( '' ) );
+        expect( expected )
+          .toEqual( actual.join( '' ) );
 
-       done();
+        done();
 
-     } );
+      } );
 
 
   } );
@@ -172,18 +172,18 @@ describe( 'Instances of concatFiles streams', ()=>{
       = [];
 
     just( input )
-     .on( 'error', onError )
-     .pipe( concatFiles( 'dirPath', delimiter ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( concatFiles( 'dirPath', delimiter ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
 
-       expect( expected )
-         .toEqual( actual.join( '' ) );
+        expect( expected )
+          .toEqual( actual.join( '' ) );
 
-       done();
+        done();
 
-     } );
+      } );
 
 
   } );
@@ -213,31 +213,31 @@ describe( 'Instances of concatFiles streams', ()=>{
       = [];
 
     just( input )
-     .on( 'error', onError )
-     .pipe( concatFiles( 'dirPath' ) )
-     .on( 'error', onError )
-     .on( 'data', ()=>{
+      .on( 'error', onError )
+      .pipe( concatFiles( 'dirPath' ) )
+      .on( 'error', onError )
+      .on( 'data', ()=>{
 
-       if( firstDataEmitted === 0 ) firstDataEmitted = firstBofEmitted + 1;
+        if( firstDataEmitted === 0 ) firstDataEmitted = firstBofEmitted + 1;
 
-     } )
-     .on( 'bof', ()=>{
+      } )
+      .on( 'bof', ()=>{
        
-       if( firstBofEmitted === 0 ) firstBofEmitted = 1;
+        if( firstBofEmitted === 0 ) firstBofEmitted = 1;
 
-     } )
-     .on( 'bof', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      } )
+      .on( 'bof', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
 
-       expect( expected )
-         .toEqual( actual );
+        expect( expected )
+          .toEqual( actual );
        
-       expect( firstBofEmitted )
-        .toBeLessThan( firstDataEmitted );
+        expect( firstBofEmitted )
+          .toBeLessThan( firstDataEmitted );
 
-       done();
+        done();
 
-     } );
+      } );
 
 
   } );

@@ -1,34 +1,35 @@
-describe( 'KeyByStream instances', ()=>{
+describe( 'GroupByStream instances', ()=>{
 
-  const createKeyAssignStream
+  const createGroupByStream
     = require( process.cl_test_util.generateUITPath( __filename ) );
-
+  
   const assert
     = require( 'assert' );
 
-  it( 'should map data received to an object keyed by the iteratee it was created with', ( done )=>{
+  it( 'should group data received to an object keyed by the iteratee it was created with', ( done )=>{
 
     const key
       = 'someKey';
 
     const value1
-      = 'item1';
-
+      = 'type1';
+     
     const value2
-      = 'item2';
+      = 'type2';
 
     const input = [
       { [ key ]: value1, stringKey: typeof '' },
+      { [ key ]: value1, 0: typeof 0 },
       { [ key ]: value2, 0: typeof 0 }
     ];
 
     const expected = {
-      [ value1 ]: input[ 0 ],
-      [ value2 ]: input[ 1 ]
+      [ value1 ]: [ input[ 0 ], input[ 1 ] ],
+      [ value2 ]: [ input[ 2 ] ]
     };
 
     let output;
-
+    
     function setOnData( obj ){
 
       assert( !output, '\'data\' emitted more than once' );
@@ -36,7 +37,7 @@ describe( 'KeyByStream instances', ()=>{
 
     }
 
-    const stream = createKeyAssignStream( key )
+    const stream = createGroupByStream( key )
       .on( 'data', setOnData )
       .on( 'finish', ()=>{
 
@@ -53,13 +54,13 @@ describe( 'KeyByStream instances', ()=>{
   } );
 
   it( 'should support functions as iteratees', ( done )=>{
-
+    
     const key
       = 'someKey';
 
     const value
       = 'item';
-
+     
     const input = {
       [ key ]:           value,
       someOtherProperty: typeof ''
@@ -69,7 +70,7 @@ describe( 'KeyByStream instances', ()=>{
       =  `Modified value '${ input[ key ] }'`;
 
     const expected = {
-      [ expectedKey ]: input
+      [ expectedKey ]: [ input ]
     };
 
     let output;
@@ -79,20 +80,20 @@ describe( 'KeyByStream instances', ()=>{
       return `Modified value '${ obj[ key ] }'`;
 
     }
-
+ 
     const writeStream = require( 'stream' ).Writable( {
       objectMode: true,
       write( obj, _, next ){
-
+      
         assert( !output, '\'data\' emitted more than once' );
         output = obj;
         next();
-
+      
       }
     } );
 
     const stream
-      = createKeyAssignStream( keyBy );
+      = createGroupByStream( keyBy );
 
     stream
       .pipe( writeStream )
@@ -107,17 +108,17 @@ describe( 'KeyByStream instances', ()=>{
 
     stream.write( input );
     stream.end();
-
-  } );
+    
+  } ); 
 
   it( 'should emit an error if a key value is not returned by the iteratee', ( done )=>{
 
     const someKey
       = 'key';
-
+    
     const someInvalidInput
-      = {}; // someInvalidInput[ someKey ] will return null, making input invalid
-
+      = {}; // someInvalidInput[ someKey ] will return null, making input invalid 
+    
     function onEvent( err ){
 
       expect( err )
@@ -127,7 +128,7 @@ describe( 'KeyByStream instances', ()=>{
 
     }
 
-    const stream = createKeyAssignStream( someKey )
+    const stream = createGroupByStream( someKey )
       .on( 'error', onEvent )
       .on( 'finish', onEvent );
 
@@ -139,8 +140,8 @@ describe( 'KeyByStream instances', ()=>{
 
   it( 'should thow if no iteratee is provided', ()=>{
 
-    expect( createKeyAssignStream )
-     .toThrow();
+    expect( createGroupByStream )
+      .toThrow();
 
   } );
 

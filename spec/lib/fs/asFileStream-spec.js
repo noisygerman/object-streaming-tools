@@ -36,18 +36,18 @@ describe( 'Instances of asFileStream streams', ()=>{
       = [];
 
     just( input )
-     .on( 'error', onError )
-     .pipe( asFileStream() )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( asFileStream() )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
      
-       expect( expected )
-         .toEqual( actual.join() );
+        expect( expected )
+          .toEqual( actual.join() );
 
-       done();
+        done();
 
-     } );
+      } );
 
   } );
 
@@ -63,18 +63,18 @@ describe( 'Instances of asFileStream streams', ()=>{
       = [];
 
     just( ...input )
-     .on( 'error', onError )
-     .pipe( asFileStream() )
-     .on( 'error', onError )
-     .on( 'eof', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( asFileStream() )
+      .on( 'error', onError )
+      .on( 'eof', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
      
-       expect( expected )
-         .toEqual( actual );
+        expect( expected )
+          .toEqual( actual );
 
-       done();
+        done();
 
-     } );
+      } );
  
   } );
 
@@ -93,31 +93,31 @@ describe( 'Instances of asFileStream streams', ()=>{
     let firstBofEmitted = 0;
     
     just( ...input )
-     .on( 'error', onError )
-     .pipe( asFileStream() )
-     .on( 'error', onError )
-     .on( 'data', ()=>{
+      .on( 'error', onError )
+      .pipe( asFileStream() )
+      .on( 'error', onError )
+      .on( 'data', ()=>{
 
-       if( firstDataEmitted === 0 ) firstDataEmitted = firstBofEmitted + 1;
+        if( firstDataEmitted === 0 ) firstDataEmitted = firstBofEmitted + 1;
 
-     } )
-     .on( 'bof', ( filePath )=>{
+      } )
+      .on( 'bof', ( filePath )=>{
        
-       actual.push( filePath );
-       if( firstBofEmitted === 0 ) firstBofEmitted = 1;
+        actual.push( filePath );
+        if( firstBofEmitted === 0 ) firstBofEmitted = 1;
        
-     } )
-     .on( 'finish', ()=>{
+      } )
+      .on( 'finish', ()=>{
      
-       expect( expected )
-         .toEqual( actual );
+        expect( expected )
+          .toEqual( actual );
 
-       expect( firstBofEmitted )
-        .toBeLessThan( firstDataEmitted );
+        expect( firstBofEmitted )
+          .toBeLessThan( firstDataEmitted );
         
-       done();
+        done();
 
-     } );
+      } );
  
   } );
 

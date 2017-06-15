@@ -13,7 +13,7 @@ describe( 'findIndexStream instances', ()=>{
     = path.dirname( uitPath );
 
   const fromArrayPath
-    = path.join( streamUtilFolder, 'from-array' );
+    = path.join( streamUtilFolder, 'fromArray' );
 
   const fromArray
     = require( fromArrayPath );

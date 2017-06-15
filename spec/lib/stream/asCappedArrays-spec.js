@@ -30,18 +30,18 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       =  Buffer.byteLength( JSON.stringify( input[ 0 ] ) ) * 2;
 
     just( ...input )
-     .on( 'error', onError )
-     .pipe( asStringBuffer( maxBufferSizeInByte ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
      
-       expect( actual )
-        .toEqual( expected );
+        expect( actual )
+          .toEqual( expected );
 
-       done();
+        done();
      
-     } );
+      } );
 
   } );
 
@@ -64,18 +64,18 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       =  Buffer.byteLength( JSON.stringify( input[ 0 ] ) );
 
     just( ...input )
-     .on( 'error', onError )
-     .pipe( asStringBuffer( maxBufferSizeInByte ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
      
-       expect( actual )
-        .toEqual( expected );
+        expect( actual )
+          .toEqual( expected );
 
-       done();
+        done();
      
-     } );
+      } );
 
   } );
 
@@ -94,18 +94,18 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       =  Buffer.byteLength( JSON.stringify( input ) ) / 2;
 
     just( input )
-     .on( 'error', onError )
-     .pipe( asStringBuffer( maxBufferSizeInByte ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
      
-       expect( actual )
-        .toEqual( expected );
+        expect( actual )
+          .toEqual( expected );
 
-       done();
+        done();
      
-     } );
+      } );
 
   } );
 
@@ -119,9 +119,9 @@ describe( 'Instances of asStringBuffer streams', ()=>{
     ];
 
     const expected = [
-        [ input[0] ],
-        [ input[1] ],
-        [ input[2] ]
+      [ input[0] ],
+      [ input[1] ],
+      [ input[2] ]
     ];
 
     const actual = [
@@ -131,18 +131,18 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       =  Buffer.byteLength( JSON.stringify( input[ 1 ] ) ) / 2;
 
     just( ...input )
-     .on( 'error', onError )
-     .pipe( asStringBuffer( maxBufferSizeInByte ) )
-     .on( 'error', onError )
-     .on( 'data', actual.push.bind( actual ) )
-     .on( 'finish', ()=>{
+      .on( 'error', onError )
+      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .on( 'error', onError )
+      .on( 'data', actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
      
-       expect( actual )
-        .toEqual( expected );
+        expect( actual )
+          .toEqual( expected );
 
-       done();
+        done();
      
-     } );
+      } );
 
   } );
 

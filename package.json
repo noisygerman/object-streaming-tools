@@ -1,8 +1,8 @@
 {
-  "name": "cl-node-object-streams",
+  "name": "object-streaming-tools",
   "version": "1.0.0",
   "description": "Helper functions to simplify creating and concatenating object streams in NodeJs",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "pretest": "eslint --fix .",
     "test": "node $NODE_DEBUG_OPTION node_modules/cl-node-dev-tools/run-tests.js",
@@ -10,23 +10,39 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/copperleaftech/cl-node-object-streams.git"
+    "url": "git+https://github.com/noisygerman/object-streaming-tools.git"
   },
   "keywords": [
     "object",
-    "streams"
+    "streams",
+    "node streams",
+    "nodejs",
+    "node js",
+    "backend"
   ],
-  "author": "Copperleaf Technologies",
+  "author": {
+    "name": "Markus Westerholz",
+    "email": "mwesterholz@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Steven Winde",
+      "email": "swinde@copperleaf.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/copperleaftech/cl-node-object-streams/issues"
+    "url": "https://github.com/copperleaftech/object-streaming-tools/issues"
   },
-  "homepage": "https://github.com/copperleaftech/cl-node-object-streams#readme",
+  "homepage": "https://github.com/copperleaftech/object-streaming-tools#readme",
   "devDependencies": {
-    "cl-node-dev-tools": "git+https://github.com/copperleaftech/cl-node-dev-tools.git",
+    "cl-node-dev-tools": "git+https://github.com/noisygerman/cl-node-dev-tools.git",
     "mock-fs": "^4.3.0"
   },
   "dependencies": {
     "async": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
