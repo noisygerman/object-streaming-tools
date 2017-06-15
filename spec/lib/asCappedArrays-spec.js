@@ -1,7 +1,7 @@
 describe( 'Instances of asStringBuffer streams', ()=>{
 
   const just
-    = require( '../../../lib/stream/just' );
+    = require( '../../lib/just' );
 
   const asStringBuffer
     = require( process.cl_test_util.generateUITPath( __filename ) );
@@ -35,12 +35,12 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
-     
+
         expect( actual )
           .toEqual( expected );
 
         done();
-     
+
       } );
 
   } );
@@ -69,12 +69,12 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
-     
+
         expect( actual )
           .toEqual( expected );
 
         done();
-     
+
       } );
 
   } );
@@ -99,12 +99,12 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
-     
+
         expect( actual )
           .toEqual( expected );
 
         done();
-     
+
       } );
 
   } );
@@ -136,12 +136,12 @@ describe( 'Instances of asStringBuffer streams', ()=>{
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
-     
+
         expect( actual )
           .toEqual( expected );
 
         done();
-     
+
       } );
 
   } );
