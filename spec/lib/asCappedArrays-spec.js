@@ -1,10 +1,13 @@
-describe( 'Instances of asStringBuffer streams', ()=>{
+describe( 'Instances of asCappedArray streams', ()=>{
+
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
 
   const just
     = require( '../../lib/just' );
 
-  const asStringBuffer
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+  const asCappedArray
+    = require( generateUITPath( __filename ) );
 
   function onError( err ){
 
@@ -31,7 +34,7 @@ describe( 'Instances of asStringBuffer streams', ()=>{
 
     just( ...input )
       .on( 'error', onError )
-      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .pipe( asCappedArray( maxBufferSizeInByte ) )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
@@ -65,7 +68,7 @@ describe( 'Instances of asStringBuffer streams', ()=>{
 
     just( ...input )
       .on( 'error', onError )
-      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .pipe( asCappedArray( maxBufferSizeInByte ) )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
@@ -95,7 +98,7 @@ describe( 'Instances of asStringBuffer streams', ()=>{
 
     just( input )
       .on( 'error', onError )
-      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .pipe( asCappedArray( maxBufferSizeInByte ) )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
@@ -132,7 +135,7 @@ describe( 'Instances of asStringBuffer streams', ()=>{
 
     just( ...input )
       .on( 'error', onError )
-      .pipe( asStringBuffer( maxBufferSizeInByte ) )
+      .pipe( asCappedArray( maxBufferSizeInByte ) )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{

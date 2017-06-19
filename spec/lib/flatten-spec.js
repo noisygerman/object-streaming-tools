@@ -1,7 +1,10 @@
 describe( 'FlattenStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const flatten
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   it( 'should have non-array type instances simply pass through', ( done )=>{
 
@@ -18,7 +21,7 @@ describe( 'FlattenStream instances', ()=>{
         done();
 
       } );
-    
+
     stream.write( expected, null, ()=>null );
     stream.end();
 
@@ -36,10 +39,10 @@ describe( 'FlattenStream instances', ()=>{
     const writeStream = require( 'stream' ).Writable( {
       objectMode: true,
       write( item, _, next ){
-        
+
         output.push( item );
         next();
-      
+
       }
     } );
 
@@ -59,13 +62,13 @@ describe( 'FlattenStream instances', ()=>{
     stream.write( input );
     stream.end();
 
-  } ); 
+  } );
 
   it( 'should skip null values', ( done )=>{
 
     const expected
       = [ 1, 2, 3, 4 ];
-    
+
     const inputs = [
       [ undefined ],
       [ null, 1, null, 2, undefined, 3, null ],
@@ -85,11 +88,11 @@ describe( 'FlattenStream instances', ()=>{
         done();
 
       } );
-    
+
     inputs.forEach( ( input )=>stream.write( input ) );
     stream.end();
 
   } );
- 
+
 
 } );

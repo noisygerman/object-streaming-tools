@@ -1,7 +1,10 @@
 describe( 'ArrayReadStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const createArrayReadStream
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   it( 'should emit data of an array', ( done )=>{
 

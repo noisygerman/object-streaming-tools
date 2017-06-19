@@ -1,10 +1,13 @@
 describe( 'findIndexStream instances', ()=>{
 
-  const createFindIndexStream
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
 
   const uitPath
-    = process.cl_test_util.generateUITPath( __filename );
+    = generateUITPath( __filename );
+
+  const createFindIndexStream
+    = require( uitPath );
 
   const path
     = require( 'path' );
@@ -22,7 +25,7 @@ describe( 'findIndexStream instances', ()=>{
     = require( 'async/asyncify' );
 
   function compare( outer, inner ){
-    
+
     return outer === inner;
 
   }
@@ -111,7 +114,7 @@ describe( 'findIndexStream instances', ()=>{
         done();
 
       } );
-  
+
   } );
 
 
@@ -141,8 +144,8 @@ describe( 'findIndexStream instances', ()=>{
         done();
 
       } );
-  
+
   } );
-  
- 
+
+
 } );

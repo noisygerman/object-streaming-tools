@@ -1,7 +1,10 @@
 describe( 'RangeStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const range
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   it( 'should emit all numbers in order', ( done )=>{
 
@@ -31,5 +34,5 @@ describe( 'RangeStream instances', ()=>{
     expect( ()=>range( 0, 9.3 ) ).toThrow();
 
   } );
-  
+
 } );

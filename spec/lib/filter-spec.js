@@ -1,7 +1,10 @@
 describe( 'FilterStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const filter
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   const asyncify
     = require( 'async/asyncify' );
@@ -23,7 +26,7 @@ describe( 'FilterStream instances', ()=>{
 
         expect( actual )
           .toEqual( expected );
-        
+
         done();
 
       } );
@@ -38,19 +41,19 @@ describe( 'FilterStream instances', ()=>{
     [ {}, 1, null, 'string', true, undefined, [] ]
       .forEach( ( p )=>expect( filter.bind( null, p ) ).toThrow() );
 
-  } ); 
+  } );
 
   it( 'should emit an error, if the filter function emits an error', ( done )=>{
-    
+
     const assert
       = require( 'assert' );
-    
+
     const stream = filter( asyncify( ()=>assert( false ) ) )
       .on( 'error', ( err )=>{
 
         expect( err ).not.toBeUndefined();
         done();
-      
+
       } )
       .on( 'finish', ()=>assert( false, 'Error was not caught' ) );
 

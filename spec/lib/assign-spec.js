@@ -1,7 +1,10 @@
 describe( 'AssignStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const uitPath
-   = process.cl_test_util.generateUITPath( __filename );
+   = generateUITPath( __filename );
 
   const path
     = require( 'path' );

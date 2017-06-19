@@ -1,7 +1,10 @@
 describe( 'KeyByStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const createKeyAssignStream
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   const assert
     = require( 'assert' );

@@ -1,7 +1,10 @@
 describe( 'JustStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const just
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   it( 'should emit any input they are instantieted with', ( done )=>{
 
@@ -111,5 +114,5 @@ describe( 'JustStream instances', ()=>{
       } );
 
   } );
-  
+
 } );

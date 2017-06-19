@@ -1,20 +1,23 @@
 describe( 'MapStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const uitPath
-   = process.cl_test_util.generateUITPath( __filename );
+   = generateUITPath( __filename );
 
   const path
     = require( 'path' );
 
   const streamUtilFolder
     =  path.dirname( uitPath );
-  
+
   const fromArrayPath
     = path.join( streamUtilFolder, 'fromArray' );
 
   const fromArray
     = require( fromArrayPath );
-  
+
   const asArray
     = require( uitPath );
 
@@ -61,7 +64,7 @@ describe( 'MapStream instances', ()=>{
 
       } );
 
-  } ); 
+  } );
 
   it( 'should pipe all data of an array in order', ( done )=>{
 
@@ -74,10 +77,10 @@ describe( 'MapStream instances', ()=>{
     const writeStream = require( 'stream' ).Writable( {
       objectMode: true,
       write( item, _, next ){
-        
+
         output.push( ...item );
         next();
-      
+
       }
     } );
 
@@ -93,6 +96,6 @@ describe( 'MapStream instances', ()=>{
 
       } );
 
-  } ); 
+  } );
 
 } );

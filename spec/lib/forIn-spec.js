@@ -1,7 +1,10 @@
 describe( 'ForInStream instances', ()=>{
-  
+
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const createForInStream
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   const isEqual
     = require( 'lodash/isEqual' );
@@ -21,7 +24,7 @@ describe( 'ForInStream instances', ()=>{
       [ key1 ]: value1,
       [ key2 ]: value2
     };
-    
+
     const expected = [
       { key: key1, value: value1 },
       { key: key2, value: value2 }
@@ -52,7 +55,7 @@ describe( 'ForInStream instances', ()=>{
       = 'key';
     const value
       = 'value';
-    
+
     const anotherKey
       = 'anotherKey';
 
@@ -60,7 +63,7 @@ describe( 'ForInStream instances', ()=>{
       { [ key ]: value, [ anotherKey ]: value },
       { [ key ]: value }
     ];
-    
+
     const expected = [
       { key, value },
       { key: anotherKey, value },
@@ -92,7 +95,7 @@ describe( 'ForInStream instances', ()=>{
       = 'key';
     const value
       = 'value';
-    
+
     const rawInput
       = { [ key ]: value };
 
@@ -105,7 +108,7 @@ describe( 'ForInStream instances', ()=>{
       inputWithToJson,
       rawInput
     ];
-    
+
     const expected = [
       { key, value },
       { key, value }
@@ -136,18 +139,18 @@ describe( 'ForInStream instances', ()=>{
       = 'key';
     const value
       = 'value';
-    
+
     const superObj
       = { [ key ]: value };
 
     const inputWithIneritedProperties
-      = Object.create( superObj ); 
+      = Object.create( superObj );
 
     const inputs = [
       inputWithIneritedProperties,
       superObj
     ];
-    
+
     const expected = [
       { key, value },
       { key, value }
@@ -171,5 +174,5 @@ describe( 'ForInStream instances', ()=>{
     forIn.end();
 
   } );
-  
+
 } );

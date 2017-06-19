@@ -1,7 +1,10 @@
 describe( 'RemoveAtStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const removeAt
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   it( 'should remove item from the array it was instiated with at the index piped in', ( done )=>{
 
@@ -13,9 +16,9 @@ describe( 'RemoveAtStream instances', ()=>{
 
         expect( input.length )
           .toBe( 0 );
-      
+
         done();
-      
+
       } );
 
     stream.write( 0 );
@@ -40,17 +43,17 @@ describe( 'RemoveAtStream instances', ()=>{
 
         expect( output )
           .toEqual( expected );
-      
+
         done();
-      
+
       } );
 
     do{
-      
+
       stream.write( 0 );
 
     } while( input.length );
-    
+
     stream.end();
 
   } );
@@ -81,7 +84,7 @@ describe( 'RemoveAtStream instances', ()=>{
     removeAt( input )
       .on( 'error', errors.push.bind( errors ) )
       .write( input.length );
- 
+
     expect( errors.length )
       .toBe( 2 );
 

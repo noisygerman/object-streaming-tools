@@ -1,8 +1,11 @@
 describe( 'GroupByStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const createGroupByStream
-    = require( process.cl_test_util.generateUITPath( __filename ) );
-  
+    = require( generateUITPath( __filename ) );
+
   const assert
     = require( 'assert' );
 
@@ -13,7 +16,7 @@ describe( 'GroupByStream instances', ()=>{
 
     const value1
       = 'type1';
-     
+
     const value2
       = 'type2';
 
@@ -29,7 +32,7 @@ describe( 'GroupByStream instances', ()=>{
     };
 
     let output;
-    
+
     function setOnData( obj ){
 
       assert( !output, '\'data\' emitted more than once' );
@@ -54,13 +57,13 @@ describe( 'GroupByStream instances', ()=>{
   } );
 
   it( 'should support functions as iteratees', ( done )=>{
-    
+
     const key
       = 'someKey';
 
     const value
       = 'item';
-     
+
     const input = {
       [ key ]:           value,
       someOtherProperty: typeof ''
@@ -80,15 +83,15 @@ describe( 'GroupByStream instances', ()=>{
       return `Modified value '${ obj[ key ] }'`;
 
     }
- 
+
     const writeStream = require( 'stream' ).Writable( {
       objectMode: true,
       write( obj, _, next ){
-      
+
         assert( !output, '\'data\' emitted more than once' );
         output = obj;
         next();
-      
+
       }
     } );
 
@@ -108,17 +111,17 @@ describe( 'GroupByStream instances', ()=>{
 
     stream.write( input );
     stream.end();
-    
-  } ); 
+
+  } );
 
   it( 'should emit an error if a key value is not returned by the iteratee', ( done )=>{
 
     const someKey
       = 'key';
-    
+
     const someInvalidInput
-      = {}; // someInvalidInput[ someKey ] will return null, making input invalid 
-    
+      = {}; // someInvalidInput[ someKey ] will return null, making input invalid
+
     function onEvent( err ){
 
       expect( err )

@@ -1,12 +1,15 @@
 describe( 'ValuesStream instances', ()=>{
 
+  const generateUITPath
+    = require( 'noisy-jasmine/test-util/generate-uit-path' );
+
   const values
-    = require( process.cl_test_util.generateUITPath( __filename ) );
+    = require( generateUITPath( __filename ) );
 
   it( 'should emit the value of properties of objects piped in', ( done )=>{
 
     const expected
-      = 'value'; 
+      = 'value';
 
     const input
       = { prop: expected };
@@ -20,11 +23,11 @@ describe( 'ValuesStream instances', ()=>{
 
         expect( output.length )
           .toBe( 1 );
-          
+
         expect( output[ 0 ] )
           .toEqual( expected );
-            
-        done(); 
+
+        done();
 
       } );
 
@@ -51,8 +54,8 @@ describe( 'ValuesStream instances', ()=>{
 
         expect( output )
           .toEqual( expected );
-            
-        done(); 
+
+        done();
 
       } );
 
@@ -73,8 +76,8 @@ describe( 'ValuesStream instances', ()=>{
 
         expect( output.length )
           .toBe( 0 );
-            
-        done(); 
+
+        done();
 
       } );
 
@@ -119,8 +122,8 @@ describe( 'ValuesStream instances', ()=>{
             .toBe( true );
 
         } );
-            
-        done(); 
+
+        done();
 
       } );
 
