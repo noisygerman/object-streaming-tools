@@ -32,9 +32,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/copperleaftech/object-streaming-tools/issues"
+    "url": "https://github.com/noisygerman/object-streaming-tools/issues"
   },
-  "homepage": "https://github.com/copperleaftech/object-streaming-tools#readme",
+  "homepage": "https://github.com/noisygerman/object-streaming-tools#readme",
   "devDependencies": {
     "cl-node-dev-tools": "git+https://github.com/noisygerman/cl-node-dev-tools.git",
     "mock-fs": "^4.3.0"
