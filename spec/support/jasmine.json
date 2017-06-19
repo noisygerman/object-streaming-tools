@@ -4,7 +4,7 @@
     "**/*-spec.js"
   ],
   "helpers": [
-    "../node_modules/noisy-node-dev-tools/spec/common-helpers/**/*.js"
+    "../node_modules/noisy-jasmine/spec/common-helpers/**/*.js"
   ],
   "stopSpecOnExpectationFailure": false,
   "random": false

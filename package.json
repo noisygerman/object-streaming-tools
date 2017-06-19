@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "pretest": "eslint --fix .",
-    "test": "node $NODE_DEBUG_OPTION node_modules/noisy-node-dev-tools/run-tests.js",
-    "tdd": "node $NODE_DEBUG_OPTION node_modules/noisy-node-dev-tools/run-tests.js continuously"
+    "test": "node $NODE_DEBUG_OPTION node_modules/noisy-jasmine/run-tests.js",
+    "tdd": "node $NODE_DEBUG_OPTION node_modules/noisy-jasmine/run-tests.js continuously"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/noisygerman/object-streaming-tools#readme",
   "devDependencies": {
+    "noisy-jasmine": "^1.0.1",
     "noisy-node-dev-tools": "^1.0.1"
   },
   "dependencies": {
