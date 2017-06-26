@@ -60,7 +60,7 @@ fromArray( [ 1, 2, 3 ] )
 
 ---
 
-### iterate with spread (...) operator
+### iterate with the spread (...) operator
 
 ```JavaScript
 const just = require( 'object-streaming-tools/lib/just' );
@@ -90,6 +90,48 @@ just( ...[ 1, 2, 3 ] )
 // output:
 // 2
 // 3
+```
+
+---
+
+### get a range of numbers
+
+```JavaScript
+const range = require( 'object-streaming-tools/lib/range' );
+
+range( 1, 3 )
+  .on( 'data', console.log );
+
+// output:
+// 1
+// 2
+// 3
+```
+
+---
+
+### switch things up
+
+```JavaScript
+const range    = require( 'object-streaming-tools/lib/range' );
+const switchBy = require( 'object-streaming-tools/lib/switchBy' );
+const asyncify = require( 'async/asyncify' );
+
+const lookup = [ 'one', 'three', 'five' ];
+
+const forTrue  = { ifMatches: true,  thenDo: asyncify( x=>lookup[ x ] ) };
+const forFalse = { ifMatches: false, thenDo: asyncify( x=>x ) };
+
+range( 1, 5 )
+  .pipe( switchBy( asyncify( x=>!!x % 2 ), [ forTrue, forFalse ] ) )
+  .on( 'data', console.log );
+
+// output:
+// one
+// 2
+// three
+// 4
+// five
 ```
 
 TBC
