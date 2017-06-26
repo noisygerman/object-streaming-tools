@@ -1,7 +1,7 @@
 describe( 'Instances of switchBy streams', ()=>{
 
   const just
-    = require( '../../lib/just');
+    = require( '../../lib/just' );
 
   const switchBy
     = require( require( 'noisy-jasmine/test-util/generate-uit-path' )( __filename ) );
@@ -34,10 +34,10 @@ describe( 'Instances of switchBy streams', ()=>{
       next( null, key );
      
     }
-
+  
     just( input )
       .on( 'error', onError )
-      .pipe( switchBy( predicate, [ { key, onKeyMatch } ] ) )
+      .pipe( switchBy( predicate, [ { ifMatches: key, thenDo: onKeyMatch } ] ) )
       .on( 'error', onError )
       .on( 'finish', ()=>{
 
