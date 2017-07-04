@@ -1,6 +1,6 @@
 {
   "name": "object-streaming-tools",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Helper functions to simplify creating and concatenating object streams in NodeJs",
   "main": "lib/index.js",
   "scripts": {

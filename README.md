@@ -27,9 +27,10 @@ so here it is.
 
 I hope some of you will find it useful.
 
-## Examples
+## Basics
 
 ---
+
 ### start with anything
 
 ```JavaScript
@@ -76,6 +77,53 @@ just( ...[ 1, 2, 3 ] )
 
 ---
 
+### streamify non-streams
+
+#### when using async functions
+
+```JavaScript
+const just  = require( 'object-streaming-tools/lib/just' );
+const apply = require( 'object-streaming-tools/lib/apply' );
+
+function log( s, next ){
+
+  console.log( s );
+  setImmediate( next, null, s );
+
+}
+
+just( 'foo' )
+  .pipe( apply( log ) )
+  .resume();
+
+// output:
+// foo
+```
+
+#### when using synchronous functions
+
+Note: Just demonstrating here a technique to achieve this using
+[asyncify](https://caolan.github.io/async/docs.html#asyncify)
+from the [async](https://caolan.github.io/async/) library, which is also used
+internally.
+
+```JavaScript
+const range    = require( 'object-streaming-tools/lib/range' );
+const apply    = require( 'object-streaming-tools/lib/apply' );
+const asyncify = require( 'async/asyncify' );
+
+range( 1, 3 )
+  .pipe( apply( asyncify( console.log ) ) )
+  .resume();
+
+// output:
+// 1
+// 2
+// 3
+```
+
+---
+
 ### filter
 
 ```JavaScript
@@ -110,6 +158,77 @@ range( 1, 3 )
 
 ---
 
+### iterate over object properties
+
+```JavaScript
+const just  = require( 'object-streaming-tools/lib/just' );
+const forIn = require( 'object-streaming-tools/lib/forIn' );
+
+just( { foo: 'bar' } )
+  .pipe( forIn() )
+  .on( 'data', ( { key, value } )=>console.log( key, value )  );
+
+// output:
+// foo bar
+```
+
+---
+
+### group items in a list by a key's values
+
+#### by using the key's identity
+
+```JavaScript
+const just     = require( 'object-streaming-tools/lib/just' );
+const apply    = require( 'object-streaming-tools/lib/apply' );
+const asyncify = require( 'async/asyncify' );
+const keyBy    = require( 'object-streaming-tools/lib/keyBy' );
+
+just( ...[ { foo: 'bar' }, { foo: 'baz' } ] )
+  .pipe( keyBy( 'foo' ) )
+  .pipe( apply( asyncify( JSON.stringify ) ) )
+  .pipe( apply( asyncify( console.log ) ) )
+  .resume();
+
+// output:
+// { "bar": { "foo": "bar" }, "baz": { "foo": "baz" } }
+```
+
+#### by using a function to calculate the key
+
+```JavaScript
+const just     = require( 'object-streaming-tools/lib/just' );
+const keyBy    = require( 'object-streaming-tools/lib/keyBy' );
+
+just( ...[ { foo: 'bar'  }, { foo: 'baz' } ] )
+  .pipe( keyBy( ( { foo } )=>foo ) )
+  .on( 'data' , ( result )=>console.log( JSON.stringify( result ) ) );
+
+// output:
+// { "bar": { "foo": "bar" }, "baz": { "foo": "baz" } }
+```
+
+Note: Both approaches above demonstrate various techniques to achieve the same
+result. Neither technique is meant to be prescriptive.
+
+---
+
+### emit values of an object
+
+```JavaScript
+const just  = require( 'object-streaming-tools/lib/just' );
+const values = require( 'object-streaming-tools/lib/forIn' );
+
+just( { foo: 'bar' } )
+  .pipe( values() )
+  .on( 'data', console.log );
+
+// output:
+// bar
+```
+
+---
+
 ### switch things up
 
 ```JavaScript
@@ -133,5 +252,22 @@ range( 1, 5 )
 // 4
 // five
 ```
+
+---
+
+### start from a callback
+
+```JavaScript
+const fs           = require( 'fs-extra' );
+const fromCallback = require( 'object-streaming-tools/lib/fromCallback' );
+
+fromCallback( fs.readJson.bind( null, 'list.json') )
+  .pipe( flatten() )
+  .on( 'data', console.log;
+
+// output, given the file contents of 'list.json' => [ "foo", "bar", "baz" ]:
+// foo bar baz
+```
+
 
 TBC
