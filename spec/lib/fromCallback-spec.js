@@ -27,10 +27,10 @@ describe( 'CallbackResultStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( output.length )
-          .toBe( 1 );
+          .to.equal( 1 );
 
         expect( output[ 0 ] )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -52,7 +52,7 @@ describe( 'CallbackResultStream instances', ()=>{
     createCallbackResultStream( emitMany )
       .on( 'error', ( err )=>{
 
-        expect( err ).toBe( expected );
+        expect( err ).to.equal( expected );
         done();
 
       } )

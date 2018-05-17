@@ -19,7 +19,7 @@ describe( 'ArrayReadStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -41,7 +41,7 @@ describe( 'ArrayReadStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -72,7 +72,7 @@ describe( 'ArrayReadStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 

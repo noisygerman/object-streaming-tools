@@ -40,7 +40,7 @@ describe( 'Instances of asCappedArray streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -74,7 +74,7 @@ describe( 'Instances of asCappedArray streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -104,7 +104,7 @@ describe( 'Instances of asCappedArray streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -141,7 +141,7 @@ describe( 'Instances of asCappedArray streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 

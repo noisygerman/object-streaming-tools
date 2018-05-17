@@ -57,7 +57,7 @@ describe( 'AssignStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -89,7 +89,7 @@ describe( 'AssignStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -134,7 +134,7 @@ describe( 'AssignStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 

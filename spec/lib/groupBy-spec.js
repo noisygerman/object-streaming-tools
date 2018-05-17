@@ -45,7 +45,7 @@ describe( 'GroupByStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -103,7 +103,7 @@ describe( 'GroupByStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -125,7 +125,7 @@ describe( 'GroupByStream instances', ()=>{
     function onEvent( err ){
 
       expect( err )
-        .not.toBeNull();
+        .to.exist;
 
       done();
 
@@ -141,10 +141,10 @@ describe( 'GroupByStream instances', ()=>{
 
   } );
 
-  it( 'should thow if no iteratee is provided', ()=>{
+  it( 'should throw if no iteratee is provided', ()=>{
 
     expect( createGroupByStream )
-      .toThrow();
+      .to.throw();
 
   } );
 

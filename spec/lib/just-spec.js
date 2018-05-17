@@ -19,7 +19,7 @@ describe( 'JustStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( input )
-          .toEqual( output[ 0 ] );
+          .to.deep.equal( output[ 0 ] );
 
         done();
 
@@ -42,7 +42,7 @@ describe( 'JustStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -63,7 +63,7 @@ describe( 'JustStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( expected )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -94,7 +94,7 @@ describe( 'JustStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( input )
-          .toEqual( output[ 0 ] );
+          .to.deep.equal( output[ 0 ] );
 
         done();
 

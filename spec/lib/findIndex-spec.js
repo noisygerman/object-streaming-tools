@@ -44,12 +44,11 @@ describe( 'findIndexStream instances', ()=>{
 
     fromArray( arr )
       .pipe( createFindIndexStream( arr, asyncify( compare ) ) )
-      .on( 'end', done )
       .on( 'data', result.push.bind( result ) )
       .on( 'finish', ()=>{
 
         expect( result )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -74,12 +73,11 @@ describe( 'findIndexStream instances', ()=>{
 
     fromArray( sourceArray )
       .pipe( createFindIndexStream( searchArray, asyncify( compare ) ) )
-      .on( 'end', done )
       .on( 'data', result.push.bind( result ) )
       .on( 'finish', ()=>{
 
         expect( result )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -104,12 +102,11 @@ describe( 'findIndexStream instances', ()=>{
 
     fromArray( sourceArray )
       .pipe( createFindIndexStream( searchArray, asyncify( compare ) ) )
-      .on( 'end', done )
       .on( 'data', result.push.bind( result ) )
       .on( 'finish', ()=>{
 
         expect( result )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -134,12 +131,11 @@ describe( 'findIndexStream instances', ()=>{
 
     fromArray( sourceArray )
       .pipe( createFindIndexStream( searchArray, asyncify( compare ) ) )
-      .on( 'end', done )
       .on( 'data', result.push.bind( result ) )
       .on( 'finish', ()=>{
 
         expect( result )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 

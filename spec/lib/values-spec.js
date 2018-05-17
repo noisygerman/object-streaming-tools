@@ -22,10 +22,10 @@ describe( 'ValuesStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output.length )
-          .toBe( 1 );
+          .to.equal( 1 );
 
         expect( output[ 0 ] )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -53,7 +53,7 @@ describe( 'ValuesStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -75,7 +75,7 @@ describe( 'ValuesStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output.length )
-          .toBe( 0 );
+          .to.equal( 0 );
 
         done();
 
@@ -114,12 +114,12 @@ describe( 'ValuesStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output.length )
-          .toEqual( expected.length );
+          .to.deep.equal( expected.length );
 
         output.forEach( ( o )=>{
 
           expect( expected.includes( o ) )
-            .toBe( true );
+            .to.equal( true );
 
         } );
 
