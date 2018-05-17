@@ -88,16 +88,19 @@ const apply = require( 'object-streaming-tools/lib/apply' );
 function log( s, next ){
 
   console.log( s );
+  this.emit( 'bar', 'THIS IS SPARTA!' ); // 'this' context is the apply stream
   setImmediate( next, null, s );
 
 }
 
 just( 'foo' )
   .pipe( apply( log ) )
+  .on( 'bar', console.log )
   .resume();
 
 // output:
 // foo
+// THIS IS SPARTA!
 ```
 
 #### when using synchronous functions
@@ -131,13 +134,24 @@ const just     = require( 'object-streaming-tools/lib/just' );
 const filter   = require( 'object-streaming-tools/lib/filter' );
 const asyncify = require( 'async/asyncify' );
 
-just( ...[ 1, 2, 3 ] )
+just( ...[ 0, 1, 2, 3 ] )
   .pipe( filter( asyncify( ( x )=>x >= 2 ) ) )
   .on( 'data', console.log );
 
 // output:
 // 2
 // 3
+
+// Get rejected items
+just( ...[ 0, 1, 2, 3 ] )
+  .pipe( filter( asyncify( ( x )=>x >= 2 ) ) )
+  .on( filter.RejectedEventKey, console.log )
+  .resume();
+
+// output:
+// 0
+// 1
+
 ```
 
 ---

@@ -9,7 +9,7 @@ describe( 'FilterStream instances', ()=>{
   const asyncify
     = require( 'async/asyncify' );
 
-  it( 'should only emit items that match the provided filter', ( done )=>{
+  it( 'should directly emit items that match the provided filter', ( done )=>{
 
     const input
       = [ 0, 1, -1, 2 ];
@@ -30,6 +30,34 @@ describe( 'FilterStream instances', ()=>{
         done();
 
       } );
+
+    input.forEach( stream.write.bind( stream ) );
+    stream.end();
+
+  } );
+
+  it( 'should emit items that don\'t match the provided filter via the "rejected" event', ( done )=>{
+
+    const input
+      = [ 0, 1, -1, 2 ];
+
+    const actual
+      = [];
+
+    const expected
+      = [ 0, -1 ];
+
+    const stream = filter( asyncify( ( i )=>i > 0 ) )
+      .on( filter.RejectedEventKey, actual.push.bind( actual ) )
+      .on( 'finish', ()=>{
+
+        expect( actual )
+          .to.deep.equal( expected );
+
+        done();
+
+      } )
+      .resume();
 
     input.forEach( stream.write.bind( stream ) );
     stream.end();

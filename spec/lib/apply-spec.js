@@ -55,4 +55,35 @@ describe( 'ApplyStream instances', ()=>{
 
   } );
 
+  it( 'should set the "this" context of the function to the invoking stream', ( done )=>{
+
+    const expected = 1;
+
+    let actual;
+
+    function foo( i, next ){
+
+      this.emit( 'bar', i );
+      next();
+
+    }
+
+    const stream = apply( foo )
+      .on( 'bar', ( output )=>actual = output )
+      .on( 'end', ()=>{
+
+        expect( expected )
+          .to.equal( actual );
+
+        done();
+
+      } )
+      .resume();
+
+    stream.write( expected );
+    stream.end();
+
+
+  } );
+
 } );
