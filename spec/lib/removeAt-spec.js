@@ -15,7 +15,7 @@ describe( 'RemoveAtStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( input.length )
-          .toBe( 0 );
+          .to.equal( 0 );
 
         done();
 
@@ -42,7 +42,7 @@ describe( 'RemoveAtStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -62,7 +62,7 @@ describe( 'RemoveAtStream instances', ()=>{
 
     [ null, undefined, {}, 0, '', ()=>null ].forEach( ( invalidTypeInstance )=>{
 
-      expect( ()=>removeAt( invalidTypeInstance ) ).toThrow();
+      expect( ()=>removeAt( invalidTypeInstance ) ).to.throw();
 
     } );
 
@@ -86,7 +86,7 @@ describe( 'RemoveAtStream instances', ()=>{
       .write( input.length );
 
     expect( errors.length )
-      .toBe( 2 );
+      .to.equal( 2 );
 
   } );
 

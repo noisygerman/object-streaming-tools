@@ -35,7 +35,7 @@ describe( 'MapStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -58,7 +58,7 @@ describe( 'MapStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -90,7 +90,7 @@ describe( 'MapStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 

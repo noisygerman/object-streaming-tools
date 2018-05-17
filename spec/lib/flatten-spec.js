@@ -16,7 +16,7 @@ describe( 'FlattenStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( expected )
-          .toEqual( actual );
+          .to.deep.equal( actual );
 
         done();
 
@@ -53,7 +53,7 @@ describe( 'FlattenStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( input )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -83,7 +83,7 @@ describe( 'FlattenStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( expected )
-          .toEqual( actual );
+          .to.deep.equal( actual );
 
         done();
 

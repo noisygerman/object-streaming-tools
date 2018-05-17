@@ -23,7 +23,7 @@ describe( 'ApplyStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( expected )
-          .toEqual( actual );
+          .to.deep.equal( actual );
 
         done();
 
@@ -43,7 +43,7 @@ describe( 'ApplyStream instances', ()=>{
       .on( 'error', ( err )=>{
 
         expect( err )
-          .toBe( expected );
+          .to.equal( expected );
 
         done();
 

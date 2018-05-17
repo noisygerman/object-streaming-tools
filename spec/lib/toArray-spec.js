@@ -35,7 +35,7 @@ describe( 'WriteToArrayStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( expected )
-          .toEqual( actual );
+          .to.deep.equal( actual );
 
         done();
 
@@ -58,7 +58,7 @@ describe( 'WriteToArrayStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( expected )
-          .toEqual( actual );
+          .to.deep.equal( actual );
 
         done();
 

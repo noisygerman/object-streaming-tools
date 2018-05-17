@@ -25,7 +25,7 @@ describe( 'FilterStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -39,7 +39,7 @@ describe( 'FilterStream instances', ()=>{
   it( 'should disallow predicates other than functions to be used', ()=>{
 
     [ {}, 1, null, 'string', true, undefined, [] ]
-      .forEach( ( p )=>expect( filter.bind( null, p ) ).toThrow() );
+      .forEach( ( p )=>expect( filter.bind( null, p ) ).to.throw() );
 
   } );
 
@@ -51,7 +51,7 @@ describe( 'FilterStream instances', ()=>{
     const stream = filter( asyncify( ()=>assert( false ) ) )
       .on( 'error', ( err )=>{
 
-        expect( err ).not.toBeUndefined();
+        expect( err ).to.exist;
         done();
 
       } )

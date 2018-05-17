@@ -38,7 +38,7 @@ describe( 'ForInStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( isEqual( output, expected ) )
-          .toBe( true );
+          .to.equal( true );
 
         done();
 
@@ -78,7 +78,7 @@ describe( 'ForInStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( isEqual( output, expected ) )
-          .toBe( true );
+          .to.equal( true );
 
         done();
 
@@ -122,7 +122,7 @@ describe( 'ForInStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -164,7 +164,7 @@ describe( 'ForInStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 

@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "pretest": "eslint --fix .",
-    "test": "node $NODE_DEBUG_OPTION node_modules/noisy-jasmine/run-tests.js",
-    "tdd": "node $NODE_DEBUG_OPTION node_modules/noisy-jasmine/run-tests.js continuously"
+    "test": "mocha --require ./spec/.config/bootstrap.js --colors ./spec/**/*-spec.js",
+    "tdd": "mocha --require ./spec/.config/bootstrap.js --watch --colors ./spec/**/*-spec.js"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,11 @@
   },
   "homepage": "https://github.com/noisygerman/object-streaming-tools#readme",
   "devDependencies": {
-    "noisy-jasmine": "^1.0.2"
+    "chai": "^4.1.2",
+    "colors": "^1.2.4",
+    "mocha": "^5.1.1",
+    "sinon": "^5.0.7",
+    "sinon-chai": "^3.0.0"
   },
   "dependencies": {
     "async": "^2.5.0",

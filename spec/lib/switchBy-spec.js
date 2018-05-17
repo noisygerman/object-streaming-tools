@@ -45,7 +45,7 @@ describe( 'Instances of switchBy streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toBe( input );
+          .to.equal( input );
         
         done();
 
@@ -85,7 +85,7 @@ describe( 'Instances of switchBy streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toBe( input );
+          .to.equal( input );
         
         done();
 
@@ -137,7 +137,7 @@ describe( 'Instances of switchBy streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toBe( expected );
+          .to.equal( expected );
         
         done();
 
@@ -179,7 +179,7 @@ describe( 'Instances of switchBy streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( wasCalled )
-          .toBe( true );
+          .to.equal( true );
         
         done();
 
@@ -251,7 +251,7 @@ describe( 'Instances of switchBy streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toEqual( input );        
+          .to.deep.equal( input );        
         done();
 
       } );
@@ -299,7 +299,7 @@ describe( 'Instances of switchBy streams', ()=>{
       .on( 'finish', ()=>{
 
         expect( actual )
-          .toEqual( expected );
+          .to.deep.equal( expected );
         done();
 
       } );

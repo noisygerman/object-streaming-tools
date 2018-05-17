@@ -20,7 +20,7 @@ describe( 'RangeStream instances', ()=>{
       .on( 'end', ()=>{
 
         expect( expected )
-          .toEqual( output );
+          .to.deep.equal( output );
 
         done();
 
@@ -30,8 +30,8 @@ describe( 'RangeStream instances', ()=>{
 
   it( 'error if the arguments are not integers', ()=>{
 
-    expect( ()=>range( 'a', 9 ) ).toThrow();
-    expect( ()=>range( 0, 9.3 ) ).toThrow();
+    expect( ()=>range( 'a', 9 ) ).to.throw();
+    expect( ()=>range( 0, 9.3 ) ).to.throw();
 
   } );
 

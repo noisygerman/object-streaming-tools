@@ -44,7 +44,7 @@ describe( 'KeyByStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -102,7 +102,7 @@ describe( 'KeyByStream instances', ()=>{
       .on( 'finish', ()=>{
 
         expect( output )
-          .toEqual( expected );
+          .to.deep.equal( expected );
 
         done();
 
@@ -124,7 +124,7 @@ describe( 'KeyByStream instances', ()=>{
     function onEvent( err ){
 
       expect( err )
-        .not.toBeNull();
+        .to.exist;
 
       done();
 
@@ -143,7 +143,7 @@ describe( 'KeyByStream instances', ()=>{
   it( 'should thow if no iteratee is provided', ()=>{
 
     expect( createKeyAssignStream )
-      .toThrow();
+      .to.throw();
 
   } );
 
