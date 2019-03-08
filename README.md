@@ -283,5 +283,18 @@ fromCallback( fs.readJson.bind( null, 'list.json') )
 // foo bar baz
 ```
 
+### emit arrays of a specified length
+
+```JavaScript
+const items = [1, 2, 3, 4, 5, 6];
+
+just(...items)
+  .pipe( asLengthLimitedArrays( 4 ) )
+  .on( 'data', console.log );
+
+// output:
+// [ 1, 2, 3, 4 ]
+// [ 5, 6 ]
+```
 
 TBC

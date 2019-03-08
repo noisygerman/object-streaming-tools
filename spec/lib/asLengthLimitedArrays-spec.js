@@ -1,9 +1,9 @@
-describe( 'The asCappedLengthArrays function', ()=>{
+describe( 'The asLengthLimitedArrays function', ()=>{
 
   const uitPath = require( 'noisy-jasmine/test-util/generate-uit-path' )( __filename );
 
   const fromArray = require( '../../lib/fromArray' );
-  const asCappedLengthArrays = require( uitPath );
+  const asLengthLimitedArrays = require( uitPath );
 
   function onError( err ){
 
@@ -20,7 +20,7 @@ describe( 'The asCappedLengthArrays function', ()=>{
 
     fromArray( items )
       .on( 'error', onError )
-      .pipe( asCappedLengthArrays( maxLength ) )
+      .pipe( asLengthLimitedArrays( maxLength ) )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
@@ -42,7 +42,7 @@ describe( 'The asCappedLengthArrays function', ()=>{
 
     fromArray( items )
       .on( 'error', onError )
-      .pipe( asCappedLengthArrays( maxLength ) )
+      .pipe( asLengthLimitedArrays( maxLength ) )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
@@ -63,7 +63,7 @@ describe( 'The asCappedLengthArrays function', ()=>{
 
     fromArray( items )
       .on( 'error', onError )
-      .pipe( asCappedLengthArrays() )
+      .pipe( asLengthLimitedArrays() )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
       .on( 'finish', ()=>{
@@ -84,12 +84,13 @@ describe( 'The asCappedLengthArrays function', ()=>{
 
     maxLengths.forEach( ( maxLength )=>{
 
-      expect( ()=>asCappedLengthArrays( maxLength ) )
+      expect( ()=>asLengthLimitedArrays( maxLength ) )
         .to.throw( expected );
     
     } );
     
   
   } );
+  
 
 } );
