@@ -297,4 +297,34 @@ just(...items)
 // [ 5, 6 ]
 ```
 
+### creates a slice of the stream starting from start index and up to, but not including, end index
+
+#### end defaults to Infinity
+```JavaScript
+const items = ['val1', 'val2', 'val3', 'val4', 'val5', 'val6'];
+const start = 2;
+just(...items)
+  .pipe( emitRange( start ) )
+  .on( 'data', console.log );
+
+// output:
+// val3
+// val4
+// val5
+// val6
+```
+#### from start to end
+```JavaScript
+const items = ['val1', 'val2', 'val3', 'val4', 'val5', 'val6'];
+const start = 2;
+const end = 5;
+just(...items)
+  .pipe( emitRange( start, end ) )
+  .on( 'data', console.log );
+
+// output:
+// val3
+// val4
+```
+
 TBC
