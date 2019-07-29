@@ -2,6 +2,7 @@ describe( 'The slice function', ()=>{
 
   const uitPath = require( 'noisy-jasmine/test-util/generate-uit-path' )( __filename );
 
+  const asArray = require( '../../lib/asArray' );
   const fromArray = require( '../../lib/fromArray' );
   const slice = require( uitPath );
 
@@ -78,6 +79,30 @@ describe( 'The slice function', ()=>{
 
     expect( ()=>slice( start ) )
       .to.throw( expected );
+  
+  } );
+
+  it( 'should unpipe from the stream and allow it to finish after end is reached', ( done )=>{
+
+    const items = ['foo', 'bar'];
+    const start = 0;
+    const end = 1;
+    const actual = [];
+    const expected = ['foo'];
+
+    fromArray( items )
+      .on( 'error', onError )
+      .pipe( slice( start, end ) )
+      .on( 'error', onError )
+      .pipe( asArray() )
+      .on( 'data', ( items )=>actual.push( ...items ) )
+      .on( 'finish', ()=>{
+
+        expect( actual )
+          .to.deep.equal( expected );
+        done();
+    
+      } );
   
   } );
 
