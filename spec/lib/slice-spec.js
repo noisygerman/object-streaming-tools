@@ -1,3 +1,5 @@
+const range = require( 'lodash/range' );
+
 describe( 'The slice function', ()=>{
 
   const uitPath = require( 'noisy-jasmine/test-util/generate-uit-path' )( __filename );
@@ -25,7 +27,7 @@ describe( 'The slice function', ()=>{
       .pipe( slice( start, end ) )
       .on( 'error', onError )
       .on( 'data', actual.push.bind( actual ) )
-      .on( 'finish', ()=>{
+      .on( 'end', ()=>{
 
         expect( actual )
           .to.deep.equal( expected );
@@ -84,11 +86,11 @@ describe( 'The slice function', ()=>{
 
   it( 'should unpipe from the stream and allow it to finish after end is reached', ( done )=>{
 
-    const items = ['foo', 'bar'];
+    const items = range( 0, 160 ).map( ( i )=>`Item${ i }` );
     const start = 0;
-    const end = 1;
+    const end = items.length / 2;
     const actual = [];
-    const expected = ['foo'];
+    const expected = items.slice( 0, end );
 
     fromArray( items )
       .on( 'error', onError )
