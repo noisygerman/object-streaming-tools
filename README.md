@@ -327,4 +327,46 @@ just(...items)
 // val4
 ```
 
+### emit only unique items in a stream
+
+#### unique
+```JavaScript
+const items = [1, 2, 3, 4, 4, 5];
+just(...items)
+  .pipe( unique() )
+  .on( 'data', console.log );
+
+// output:
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+#### uniqueBy
+##### via a string iteratee
+```JavaScript
+const items = [{id: 'foo'}, {id: 'bar'}, {id: 'foo'}];
+const attributeName = 'id'
+just(...items)
+  .pipe( uniqueBy( attributeName ) )
+  .on( 'data', console.log );
+
+// output:
+// {id: 'foo'}
+// {id: 'bar'}
+```
+
+##### via an iteratee function
+```JavaScript
+const items = [2.1, 1.2, 2.3];
+just(...items)
+  .pipe( uniqueBy( Math.floor ) )
+  .on( 'data', console.log );
+
+// output:
+// 2.1
+// 1.2
+```
+
 TBC
